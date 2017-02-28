@@ -11,14 +11,12 @@ function meta:Fireworks( interval, opacity, particleOpacity )
 				self.Fireworks[ num ] = {}
 				self.Fireworks[ num ].x = math.random( 0, self:GetWide() )
 				self.Fireworks[ num ].y = 0
-				self.Fireworks[ num ].explode = math.Rand( self:GetTall() * 0.0015, self:GetTall() * 0.0035 )
-				self.Fireworks[ num ].lifetime = 0
+				self.Fireworks[ num ].explode = math.Rand( self:GetTall() * 0.5, self:GetTall() * 0.95 )
 				self.Fireworks[ num ].colour = HSVToColor( CurTime() * 10000 % 360, 1, 1 )
 				self.LastFirework = CurTime()
 			end
 			for i, firework in ipairs( self.Fireworks ) do
-				firework.lifetime = firework.lifetime + 0.002
-				if firework.lifetime >= firework.explode then
+				if firework.y >= firework.explode then
 					if firework.particles then
 						for _, particle in ipairs( firework.particles ) do
 							surface.SetDrawColor( firework.colour.r, firework.colour.g, firework.colour.b, particle.opacity )
@@ -44,7 +42,7 @@ function meta:Fireworks( interval, opacity, particleOpacity )
 				continue end
 				surface.SetDrawColor( firework.colour.r, firework.colour.g, firework.colour.b, opacity )
 				surface.DrawLine( firework.x, self:GetTall() - firework.y, firework.x, self:GetTall() - firework.y - 5 )
-				firework.y = firework.y + self:GetTall() * 0.0005
+				firework.y = firework.y + self:GetTall() * 0.001
 			end
 		end
 	end
