@@ -44,3 +44,9 @@ function meta:SetVertices( verts )
 		render.SetStencilEnable( false )
 	end
 end
+--[[
+	Example:
+	local example = vgui.Create( "DFrame" )
+	example:SetSize( 100, 100 )
+	example:SetVertices( 6 )
+]]--
