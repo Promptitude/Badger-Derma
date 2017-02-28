@@ -1,6 +1,6 @@
 local meta = FindMetaTable( "Panel" )
 
-function meta:Fireworks( interval, opacity, particleOpacity )
+function meta:Fireworks( interval, particleCount, opacity, particleOpacity )
 	local oldPaint = self.Paint
 	self.Fireworks = {}
 	self.ShouldFirework = true
@@ -30,10 +30,10 @@ function meta:Fireworks( interval, opacity, particleOpacity )
 						end
 					else
 						firework.particles = {}
-						for i = 1, 200 do
+						for i = 1, particleCount do
 							firework.particles[ i ] = {}
-							firework.particles[ i ].x = firework.x + math.sin( math.rad( i * ( 360 / 200 ) ) ) + math.Rand( -0.9, 0.45 )
-							firework.particles[ i ].y = firework.y + math.cos( math.rad( i * ( 360 / 200 ) ) ) + math.Rand( -0.9, 0.45 )
+							firework.particles[ i ].x = firework.x + math.sin( math.rad( i * ( 360 / particleCount ) ) ) + math.Rand( -0.9, 0.45 )
+							firework.particles[ i ].y = firework.y + math.cos( math.rad( i * ( 360 / particleCount ) ) ) + math.Rand( -0.9, 0.45 )
 							firework.particles[ i ].movex = firework.particles[ i ].x - firework.x
 							firework.particles[ i ].movey = firework.particles[ i ].y - firework.y
 							firework.particles[ i ].opacity = particleOpacity
@@ -54,7 +54,7 @@ end
 	example:SetSize( ScrW(), ScrH() )
 	example:Center()
 	example:MakePopup()
-	example:Fireworks( 0.2, 10, 255 )
+	example:Fireworks( 0.2, 200, 10, 255 )
 	example.Paint = function( self, w, h )
 		surface.SetDrawColor( 0, 0, 0 )
 		surface.DrawRect( 0, 0, w, h )
