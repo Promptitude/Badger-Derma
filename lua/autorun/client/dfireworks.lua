@@ -50,12 +50,15 @@ function meta:Fireworks( interval, opacity, particleOpacity )
 	end
 end
 
-local meme = vgui.Create( "DFrame" )
-meme:SetSize( ScrW(), ScrH() )
-meme:Center()
-meme:MakePopup()
-meme:Fireworks( 0.2, 10, 255 )
-meme.Paint = function( self, w, h )
-	surface.SetDrawColor( 0, 0, 0 )
-	surface.DrawRect( 0, 0, w, h )
-end
+--[[
+	Example:
+	local example = vgui.Create( "DFrame" )
+	example:SetSize( ScrW(), ScrH() )
+	example:Center()
+	example:MakePopup()
+	example:Fireworks( 0.2, 10, 255 )
+	example.Paint = function( self, w, h )
+		surface.SetDrawColor( 0, 0, 0 )
+		surface.DrawRect( 0, 0, w, h )
+	end
+]]--
