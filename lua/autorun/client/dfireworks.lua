@@ -42,7 +42,7 @@ function meta:Fireworks( interval, particleCount, opacity, particleOpacity )
 				continue end
 				surface.SetDrawColor( firework.colour.r, firework.colour.g, firework.colour.b, opacity )
 				surface.DrawLine( firework.x, self:GetTall() - firework.y, firework.x, self:GetTall() - firework.y - 5 )
-				firework.y = firework.y + self:GetTall() * 0.001
+				firework.y = firework.y + self:GetTall() * 0.003
 			end
 		end
 	end
